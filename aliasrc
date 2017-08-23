@@ -1,3 +1,5 @@
-alias   l='ls -F --color=yes'
-alias	ll='ls -lF --color=yes'
-
+alias   l='ls -F'
+alias	ll='ls -lF'
+alias   tree='find .'
+alias   gitgraph='git log --oneline --decorate --graph'
+#alias   vim='mvim -v'

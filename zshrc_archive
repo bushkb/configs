@@ -1,0 +1,132 @@
+#############################################################################
+#                            bushk's    .zshrc file.  
+#                            Author:	Kevin Beckwith Bush
+#                              Date:	10 Mar 2007
+#############################################################################
+
+##
+## Color Defs
+##
+DEFAULT="%{\e[0m%}"
+BOLD="%{\e[1m%}"
+HIDDEN="%{\e[8m%}"
+BLACK="%{\e[00;30m%}"
+GRAY="%{\e[01;30m%}"
+RED="%{\e[00;31m%}"
+LRED="%{\e[01;31m%}"
+GREEN="%{\e[00;32m%}"
+LGREEN="%{\e[01;32m%}"
+BROWN="%{\e[00;33m%}"
+YELLOW="%{\e[00;33m%}"
+BLUE="%{\e[00;34m%}"
+LBLUE="%{\e[01;34m%}"
+PURPLE="%{\e[00;35m%}"
+LPURPLE="%{\e[01;35m%}"
+CYAN="%{\e[00;36m%}"
+LCYAN="%{\e[01;36m%}"
+LGRAY="%{\e[00;37m%}"
+WHITE="%{\e[01;37m%}"
+
+
+##
+## UMASK default. 
+##
+#umask 077
+
+##
+## Environment Variables
+##
+
+## FORTRESS
+       PATH=/u/bushk/bin:${PATH}		# use my own copy if I have it
+export PATH
+       PS1="%(?..%? )%m [ "			# Exit code IFF non-zero.
+export PS1="$(print $RED)$PS1$(print $DEFAULT)"	# Colors!
+       PS2=$PS2						# DEFAULT: context.
+export PS2="$(print $RED)$PS2$(print $DEFAULT)"	# Colors!
+       RPS1=" %~ %t"					# Directory and time.
+export RPS1="$(print $RED)$RPS1$(print $DEFAULT)"	# Colors!
+export PRINTER=LW24			# Default printer.
+export EDITOR=vim			# Vim.
+export MAIL=${HOME}/mailbox	# Mailbox
+       mailpath=($HOME/mailbox'?New mail in mailbox')
+export mailpath
+
+export EMAIL=bushk@cs.utexas.edu	# for darcs
+
+export MAILER=mutt			# Mail tool.
+export HISTFILE=$HOME/.history		# where to save history
+
+export TDL_DATABASE=~/.tdldb
+
+export MPD_HOST=127.0.0.1
+export MPD_PORT=6600
+
+
+##
+## Local Variables
+##
+HISTSIZE=1000			# keep the last X cmds
+SAVEHIST=1000			# save history for next session
+
+
+##
+## Options - Only those which I care about - use `man zshoptions` for list.
+##
+#	Changing Directories
+setopt autocd 			# Instert `cd` if necessary.
+setopt no_autopushd		# Do not spam my stack.
+setopt no_cdablevars		# NO Auto ~/ insert.
+setopt chasedots		# Chase dots *thru* sym links.
+setopt no_chaselinks		# NO reverse of chasedots.
+setopt completeinword		# Not just at the end of words.
+setopt no_pushdignoredups	# NO ignoring dups - it is a gdamn *STACK*!
+setopt no_pushdminus		# NO reversing +/- on dir stack.
+setopt no_pushdsilent		# NO supression of dir stack.
+setopt no_pushdtohome		# NO `pushd` -> home.  pushd rotates stack.
+#	Completion
+setopt bashautolist		# Bash <tab><tab> behavior.
+setopt globcomplete		# Complete regex's where possible.
+setopt listambiguous		# <tab><tab><tab> lists matches.
+setopt no_listbeep		# Tell the shell to STFU.
+setopt listpacked		# Fit more in by varying col space.
+setopt listtypes		# Use trailing marks to denote type.
+# 	Expansion & Globbing
+setopt noextendedglob		# Include '#','~','^' in matching pattern.
+setopt markdirs			# Append '/' to all dirs.
+setopt no_nomatch		# NO 'zsh: no matches found...'
+setopt nullglob			# Remove matchless entries w/o error.
+#	History
+setopt append_history 		# Do not blow away the history!
+setopt hist_beep		# Beep if it's not there.
+setopt hist_reduce_blanks	# No wasted space in history.
+setopt histignoredups		# No duplicates in history.
+setopt share_history 		# Share history between zsh sessions.
+#	Input/Ouput
+setopt clobber			# Bash-like '>' & '>>'.
+setopt no_correct		# NO sp. correcting - considered dangerous!
+setopt no_correctall		# NO sp. correcting - considered dangerous!
+setopt interactive_comments	# Allow comments in interact shell lines.
+setopt noprintexitvalue		# Avoid error codes (we have it in PS1!).
+setopt rm_star_silent		# Do no prompt to confirm wildcard rm's.
+#	Zle
+setopt no_beep			# NO BEEPING!
+setopt vi			# Use vi-mode emulation (esc, hjkl, etc).
+
+
+##
+## Aliases & Dirs
+##
+if [[ -r ~/.aliasrc ]]; then 
+    source ~/.aliasrc 
+fi
+
+##
+## Ubuntu goodness...
+##
+if [[ -r /etc/zsh_command_not_found ]]; then
+    source /etc/zsh_command_not_found
+fi
+
+## .zshrc END
+##
